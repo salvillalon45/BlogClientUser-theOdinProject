@@ -1,18 +1,26 @@
 import React from 'react';
 
 function Footer() {
-	const logoStyle = `
-    text-white 
-    font-rammetto
-    sm:text-base
-    text-sm
-    `;
-
 	return (
-		<footer className='text-center py-8 bg-green-900 text-gray-100'>
-			<p>
-				Copyright 2030 <span className={logoStyle}>HealthRoom</span>
-			</p>
+		<footer
+			className='flex justify-end	py-8 bg-blue text-gray-100'
+			id='footerContainer'
+		>
+			<div className='flex footerContentContainer'>
+				<p className='font-lora mx-4 text-lg'>
+					Made By Salvador Villalon
+				</p>
+				<p className='mx-4 text-lg'>
+					<a href='https://www.linkedin.com/in/salvadorvillalon/'>
+						<i class='bi bi-linkedin'></i>
+					</a>
+				</p>
+				<p className='mx-4 text-lg'>
+					<a href='https://github.com/salvillalon45'>
+						<i class='bi bi-github'></i>
+					</a>
+				</p>
+			</div>
 		</footer>
 	);
 }

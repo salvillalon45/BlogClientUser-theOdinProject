@@ -17,17 +17,18 @@ function Header() {
 
 	return (
 		<header>
-			<nav className='flex sm:justify-between justify-around items-center bg-green-900 lg:px-20 sm:px-6 py-8 text-gray-100'>
-				<h3 className={logoStyle}>HealthRoom</h3>
+			<nav className='flex sm:justify-between justify-around items-center bg-blue lg:px-20 sm:px-6 py-8 text-gray-100'>
+				<h3 className='font-lora text-2xl'>Sal Blog</h3>
+
 				<ul className='flex'>
-					<li className={linkStyle}>
-						<Link to='/'>Home</Link>
+					<li className='font-lora mx-4 text-xl'>
+						<Link to='/'>Log In</Link>
 					</li>
-					<li className={linkStyle}>
-						<Link to='/contact'>Contact</Link>
+					<li className='font-lora mx-4 text-xl'>
+						<Link to='/contact'>Sign Up</Link>
 					</li>
-					<li className={linkStyle}>
-						<Link to='/about'>About</Link>
+					<li className='font-lora mx-4 text-xl'>
+						<Link to='/about'>Log Out</Link>
 					</li>
 				</ul>
 			</nav>

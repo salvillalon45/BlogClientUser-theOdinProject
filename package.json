@@ -20,9 +20,16 @@
     "gatsby-plugin-react-helmet": "^4.14.0",
     "gatsby-plugin-sharp": "^3.14.1",
     "gatsby-source-filesystem": "^3.14.0",
+    "gatsby-transformer-remark": "^4.11.0",
     "gatsby-transformer-sharp": "^3.14.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.7",
+    "gatsby-plugin-postcss": "^4.14.0",
+    "postcss": "^8.3.9",
+    "tailwindcss": "^2.2.16"
   }
 }
