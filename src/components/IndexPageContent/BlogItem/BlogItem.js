@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+require('dotenv').config({
+	path: `.env.${process.env.NODE_ENV}` // this dotenv config gives access to process.env object
+});
 
 function BlogItem({ username, alt, image, slug, title, timestamp }) {
 	return (
 		<div className='hover:opacity-50'>
-			<Link to={`/${slug}`}>
+			{/* <Link to={`${process.env.GATSBY_DEV_BLOG_API}/posts/${slug}`}> */}
+			<Link to={`${slug}`}>
 				<GatsbyImage
 					image={image}
 					alt={alt}

@@ -17,7 +17,7 @@ function Header() {
 
 	return (
 		<header>
-			<nav className='flex sm:justify-between justify-around items-center bg-blue lg:px-20 sm:px-6 py-8 text-gray-100'>
+			<nav className='flex sm:justify-between justify-around items-center bg-white lg:px-20 sm:px-6 py-8 text-black'>
 				<h3 className='font-lora text-2xl'>Sal Blog</h3>
 
 				<ul className='flex'>

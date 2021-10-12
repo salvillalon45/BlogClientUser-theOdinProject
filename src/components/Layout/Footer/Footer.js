@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
 	return (
 		<footer
-			className='flex justify-end	py-8 bg-blue text-gray-100'
+			className='flex justify-end	py-4 bg-white text-black'
 			id='footerContainer'
 		>
 			<div className='flex footerContentContainer'>

@@ -7,7 +7,7 @@ function IndexPageContent() {
 	return (
 		<div className='IndexPageContentContainer'>
 			<IntroHeader />
-			<h1>INDEX PAGE </h1>
+
 			<BlogGrid />
 		</div>
 	);
