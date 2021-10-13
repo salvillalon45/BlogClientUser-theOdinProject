@@ -3,7 +3,6 @@ import BlogItem from '../BlogItem';
 import { graphql, useStaticQuery } from 'gatsby';
 
 function BlogGrid(props) {
-	console.log({ props });
 	const data = useStaticQuery(graphql`
 		query {
 			blogs {
@@ -24,7 +23,7 @@ function BlogGrid(props) {
 	const blogItems = posts.map((post, index) => {
 		const { title, content, timestamp, _id } = post;
 		const { username } = post.author;
-		console.log(post._id);
+
 		return (
 			<BlogItem
 				alt={`A Blog Made By ${username}`}
@@ -34,6 +33,7 @@ function BlogGrid(props) {
 				timestamp={timestamp}
 				username={username}
 				postid={_id}
+				content={content}
 			/>
 		);
 	});

@@ -38,21 +38,29 @@ const Article = ({ data }) => {
 export default Article;
 
 // export const query = graphql`
-// 	query ArticleQuery($slug: String) {
-// 		markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-// 			html
-// 			frontmatter {
-// 				title
-// 				tag
-// 				image {
-// 					childImageSharp {
-// 						gatsbyImageData(
-// 							layout: FULL_WIDTH
-// 							placeholder: BLURRED
-// 						)
-// 					}
-// 				}
+// 	query ($characterID: ID!) {
+// 		rickandmorty {
+// 			character(id: $characterID) {
+// 				image
+// 				name
+// 				species
 // 			}
 // 		}
 // 	}
 // `;
+// blogs(id: { eq: $slug }) {
+export const query = graphql`
+	query BlogItemQuery($slug: String) {
+		blogs(_id: { eq: $slug }) {
+			posts {
+				title
+				content
+				_id
+				timestamp
+				author {
+					username
+				}
+			}
+		}
+	}
+`;
