@@ -28,22 +28,28 @@ exports.onCreateWebpackConfig = ({ actions, stage, plugins }) => {
 	});
 };
 
-// This helps create dynamic page based on the id of the blog
-// More here: https://medium.com/@ghoshanimesh/dynamic-routing-in-gatsby-b6ada258f6c2
-exports.createPages = async ({ graphql, actions }) => {
-	console.log('What is createPages()');
+// Creating Pages from Data Programmatically
+// More here: https://www.gatsbyjs.com/docs/programmatically-create-pages-from-data/
+exports.createPages = async ({ actions }) => {
 	const response = await fetch(`${process.env.GATSBY_DEV_BLOG_API}/posts`);
 	const postsData = await response.json();
 
 	postsData.posts.forEach((item) => {
-		console.log({ item });
 		actions.createPage({
-			path: item._id,
-			component: path.resolve('src/templates/article.js'),
+			path: `/blog/${item._id}`,
+			component: path.resolve('src/templates/blog.js'),
 			context: { slug: item._id }
 		});
 	});
 };
+
+// This helps create dynamic page based on the id of the blog
+// More here: https://medium.com/@ghoshanimesh/dynamic-routing-in-gatsby-b6ada258f6c2
+// But this way did not work for me since from the index page I will then click on a post
+// it will take me to the post page. I will pass the data using state. If the user where to comeback
+// to that same post in a new tab the state will be refreshed and there will be no data on component
+// I needed to create pages programmatically just like I am doing above, where I can use graphql to query the data
+// so when the user comes back to this page, that data will still be there
 // exports.onCreatePage = async ({ page, actions }) => {
 // 	const { createPage } = actions;
 // 	console.log('Page -- ', page.path);

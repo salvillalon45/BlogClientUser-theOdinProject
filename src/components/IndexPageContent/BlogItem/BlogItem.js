@@ -10,8 +10,8 @@ function BlogItem(props) {
 	return (
 		<div className='hover:opacity-50'>
 			{/* <Link to={`${process.env.GATSBY_DEV_BLOG_API}/posts/${slug}`}> */}
-			{/* <Link to={`blog/${slug}`} state={{ postDetail: props }}> */}
-			<Link to={`${slug}`} state={{ postDetail: props }}>
+			<Link to={`blog/${slug}`} state={{ postDetail: props }}>
+				{/* <Link to={`${slug}`} state={{ postDetail: props }}> */}
 				<GatsbyImage
 					image={image}
 					alt={alt}

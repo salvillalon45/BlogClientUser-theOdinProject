@@ -1,6 +1,7 @@
 import React from 'react';
 import BlogItem from '../BlogItem';
 import { graphql, useStaticQuery } from 'gatsby';
+import { formatDate } from '../../../lib/utils';
 
 function BlogGrid(props) {
 	const data = useStaticQuery(graphql`

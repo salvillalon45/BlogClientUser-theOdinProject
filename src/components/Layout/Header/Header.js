@@ -24,13 +24,13 @@ function Header() {
 
 				<ul className='flex'>
 					<li className='font-lora mx-4 text-xl'>
-						<Link to='/'>Log In</Link>
+						<Link to='/auth?log-in'>Log In</Link>
 					</li>
 					<li className='font-lora mx-4 text-xl'>
-						<Link to='/contact'>Sign Up</Link>
+						<Link to='/auth?sign-up'>Sign Up</Link>
 					</li>
 					<li className='font-lora mx-4 text-xl'>
-						<Link to='/about'>Log Out</Link>
+						<Link to='/log-out'>Log Out</Link>
 					</li>
 				</ul>
 			</nav>
