@@ -2,19 +2,6 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 function Header() {
-	const linkStyle = `
-     Hover:opacity-70
-     text-sm
-     sm:text-lg
-    `;
-
-	const logoStyle = `
-    text-white 
-    font-rammetto
-    sm:text-base
-    text-sm
-    `;
-
 	return (
 		<header>
 			<nav className='flex sm:justify-between justify-around items-center bg-white lg:px-20 sm:px-6 py-8 text-black'>

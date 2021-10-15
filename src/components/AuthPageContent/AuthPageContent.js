@@ -1,30 +1,58 @@
 import React from 'react';
-import { checkAuthPage } from '../../lib/utils';
+import AuthForm from './AuthForm';
+import { Link } from 'gatsby';
+import { getAuthPage, checkAuthPage } from '../../lib/utils';
+import Errors from '../Reusable/Errors';
 
 function AuthPageContent(props) {
-	const authFlag = checkAuthPage();
+	const authFlag = getAuthPage();
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
 	const [signUpMessage, setSignUpMessage] = React.useState('');
+	const [errors, setErrors] = React.useState(null);
 
-	function handleSubmit() {
-		const authData = { username, password };
+	async function handleSubmit() {
+		try {
+			const authData = { username, password };
 
-		const response = await fetch(
-			`${process.env.GATSBY_DEV_BLOG_API}/${authFlag}`,
-			{
-				method: 'post',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(authData)
+			const response = await fetch(
+				`${process.env.GATSBY_DEV_BLOG_API}/${authFlag}`,
+				{
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(authData)
+				}
+			);
+			console.log('Wht is erspon');
+			const errorsCheck = await response.json();
+			console.log(errorsCheck);
+			const errors = errorsCheck.errors ?? '';
+			console.log('HERE', errors);
+			if (errors) {
+				setErrors(errors);
+				return;
 			}
-		);
 
-		if (authFlag === 'sign-up') {
-			setSignUpMessage('Great! Now you need to log in!');
-		} else {
-			// store is local storage
+			if (authFlag === 'sign-up' && !errors) {
+				setErrors(null);
+				setSignUpMessage('Great! Now you need to log in!');
+			} else {
+				setErrors(null);
+				setSignUpMessage('');
+
+				const loginData = await response.json();
+				console.log({ loginData });
+				const { user, token } = loginData;
+				const { username } = user;
+
+				localStorage.setItem('user', username);
+				localStorage.setItem('token', token);
+			}
+		} catch (err) {
+			console.log(err);
+			setErrors(err);
 		}
 	}
 
@@ -38,63 +66,29 @@ function AuthPageContent(props) {
 		}
 	}
 
+	if (checkAuthPage(authFlag)) {
+		return (
+			<div className='authErrorContainer'>
+				<p>Looks like you are lost. See the links below</p>
+				<Link to='/'>Home</Link>
+				<Link to='/auth?log-in'>Log In</Link>
+				<Link to='/auth?sign-up'>Sign Up</Link>
+			</div>
+		);
+	}
+
+	console.log(errors);
+
 	return (
-		<div className='authFormWrapperContainer w-full max-w-xs'>
-			<form className='authFormContainer bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
-				<div className='mb-4'>
-					<label
-						className='block text-gray-700 text-sm font-bold mb-2'
-						for='username'
-					>
-						Username
-					</label>
-					<input
-						className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-						id='username'
-						name='username'
-						type='text'
-						placeholder='Username'
-						onChange={(event) => handleChange(event)}
-					/>
-				</div>
-				<div className='mb-6'>
-					<label
-						className='block text-gray-700 text-sm font-bold mb-2'
-						for='password'
-					>
-						Password
-					</label>
-					<input
-						className='shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
-						id='password'
-						name='password'
-						type='password'
-						placeholder='******************'
-						onChange={(event) => handleChange(event)}
-					/>
-					<p className='text-red-500 text-xs italic'>
-						Please choose a password.
-					</p>
-				</div>
-				<div className='flex items-center justify-between'>
-					<button
-						className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-						type='button'
-						onClick={() => handleSubmit()}
-					>
-						Sign In
-					</button>
-					<a
-						className='inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800'
-						href='#'
-					>
-						Forgot Password?
-					</a>
-				</div>
-			</form>
-			<p className='text-center text-gray-500 text-xs'>
-				&copy;2020 Acme Corp. All rights reserved.
-			</p>
+		<div className='authPageContentContainer'>
+			<h2>{authFlag === 'sign-up' ? 'Sign Up' : 'Log In'}</h2>
+			<AuthForm
+				signUpMessage={authFlag === 'log-in' ? '' : signUpMessage}
+				handleSubmit={handleSubmit}
+				handleChange={handleChange}
+			/>
+
+			{errors && <Errors errors={errors} />}
 		</div>
 	);
 }

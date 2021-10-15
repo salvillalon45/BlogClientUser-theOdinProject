@@ -6,8 +6,16 @@ function getPostId() {
 	return window.location.pathname.split('/')[2];
 }
 
-function checkAuthPage() {
+function getAuthPage() {
 	return window.location.search.slice(1);
+}
+
+function checkAuthPage(authFlag) {
+	if (authFlag === undefined || authFlag === null || authFlag.length === 0) {
+		return true;
+	}
+
+	return !['sign-up', 'log-in'].includes(authFlag);
 }
 
 function formatDate(timestamp) {
@@ -16,4 +24,4 @@ function formatDate(timestamp) {
 	return messageDate;
 }
 
-export { getPostById, formatDate, getPostId, checkAuthPage };
+export { getPostById, formatDate, getPostId, checkAuthPage, getAuthPage };
