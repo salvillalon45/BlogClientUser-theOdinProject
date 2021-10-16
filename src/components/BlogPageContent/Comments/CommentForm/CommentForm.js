@@ -21,15 +21,17 @@ function CommentForm(props) {
 	async function handleSubmit() {
 		try {
 			// Will come from localstorage
-			const username = 'salvillalon45';
+			const { username, user_ref } = JSON.parse(
+				localStorage.getItem('user')
+			);
 			const formInput = {
-				user_ref: username,
+				user_ref: user_ref,
 				content,
 				timestamp: String(new Date())
 			};
 			props.handleCommmentsChange(formInput);
 			const postid = getPostId();
-			const user_ref = '61609beae78c285ad1f6e775';
+			// const user_ref = '61609beae78c285ad1f6e775';
 			const newCommentBody = { content, user_ref };
 			const response = await fetch(
 				`${process.env.GATSBY_DEV_BLOG_API}/posts/${postid}/comments`,

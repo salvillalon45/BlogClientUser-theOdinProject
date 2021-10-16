@@ -1,7 +1,28 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
+
+import { checkUserLoggedIn } from '../../../lib/utils';
 
 function Header() {
+	const userCheck = checkUserLoggedIn();
+	const [logFlag, setLogFlag] = React.useState(userCheck);
+
+	function handleLogout() {
+		// console.log('Inside handleLogout');
+		localStorage.removeItem('user');
+		localStorage.removeItem('token');
+		setLogFlag(false);
+		navigate('/');
+	}
+
+	React.useEffect(() => {
+		console.group('Inside Use Effect in Header');
+		const userCheck = checkUserLoggedIn();
+		console.log({ userCheck });
+		setLogFlag(userCheck);
+		console.groupEnd();
+	}, [logFlag]);
+
 	return (
 		<header>
 			<nav className='flex sm:justify-between justify-around items-center bg-white lg:px-20 sm:px-6 py-8 text-black'>
@@ -10,15 +31,25 @@ function Header() {
 				</Link>
 
 				<ul className='flex'>
-					<li className='font-lora mx-4 text-xl'>
-						<Link to='/auth?log-in'>Log In</Link>
-					</li>
-					<li className='font-lora mx-4 text-xl'>
-						<Link to='/auth?sign-up'>Sign Up</Link>
-					</li>
-					<li className='font-lora mx-4 text-xl'>
-						<Link to='/log-out'>Log Out</Link>
-					</li>
+					{!logFlag && (
+						<>
+							<li className='font-lora mx-4 text-xl'>
+								<Link to='/auth?log-in'>Log In</Link>
+							</li>
+
+							<li className='font-lora mx-4 text-xl'>
+								<Link to='/auth?sign-up'>Sign Up</Link>
+							</li>
+						</>
+					)}
+
+					{logFlag && (
+						<li className='font-lora mx-4 text-xl'>
+							<button onClick={() => handleLogout()}>
+								Log Out
+							</button>
+						</li>
+					)}
 				</ul>
 			</nav>
 		</header>

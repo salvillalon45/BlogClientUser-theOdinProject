@@ -3,7 +3,10 @@ import React from 'react';
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem';
 
+import { checkUserLoggedIn } from '../../../lib/utils';
+
 function Comments(props) {
+	const userCheck = checkUserLoggedIn();
 	const { comments } = props;
 	const [currentComments, setCurrentComments] = React.useState(comments);
 
@@ -28,6 +31,7 @@ function Comments(props) {
 	return (
 		<div className='commmentsContainer flex flex-col items-center'>
 			<h1>Comment go here</h1>
+
 			{commentItems}
 
 			<CommentForm handleCommmentsChange={handleCommmentsChange} />

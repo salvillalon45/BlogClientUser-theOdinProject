@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthForm from './AuthForm';
-import { Link } from 'gatsby';
-import { getAuthPage, checkAuthPage } from '../../lib/utils';
+import { Link, navigate } from 'gatsby';
+import { getAuthPage, checkAuthPage, checkUserLoggedIn } from '../../lib/utils';
 import Errors from '../Reusable/Errors';
 
 function AuthPageContent(props) {
@@ -10,6 +10,13 @@ function AuthPageContent(props) {
 	const [password, setPassword] = React.useState('');
 	const [signUpMessage, setSignUpMessage] = React.useState('');
 	const [errors, setErrors] = React.useState(null);
+
+	React.useEffect(() => {
+		// ? : '';
+		if (checkUserLoggedIn()) {
+			navigate('/');
+		}
+	});
 
 	async function handleSubmit() {
 		try {
@@ -25,11 +32,12 @@ function AuthPageContent(props) {
 					body: JSON.stringify(authData)
 				}
 			);
-			console.log('Wht is erspon');
-			const errorsCheck = await response.json();
-			console.log(errorsCheck);
-			const errors = errorsCheck.errors ?? '';
-			console.log('HERE', errors);
+			// console.log('Wht is erspon');
+			// const errorsCheck = await response.json();
+			const loginData = await response.json();
+			// console.log({ loginData });
+			const errors = loginData.errors ?? '';
+			// console.log('HERE', errors);
 			if (errors) {
 				setErrors(errors);
 				return;
@@ -42,13 +50,17 @@ function AuthPageContent(props) {
 				setErrors(null);
 				setSignUpMessage('');
 
-				const loginData = await response.json();
-				console.log({ loginData });
+				// console.log({ loginData });
 				const { user, token } = loginData;
-				const { username } = user;
+				const { username, _id: user_ref } = user;
 
-				localStorage.setItem('user', username);
+				localStorage.setItem(
+					'user',
+					JSON.stringify({ username, user_ref })
+				);
 				localStorage.setItem('token', token);
+
+				navigate('/');
 			}
 		} catch (err) {
 			console.log(err);
@@ -77,7 +89,7 @@ function AuthPageContent(props) {
 		);
 	}
 
-	console.log(errors);
+	// console.log(errors);
 
 	return (
 		<div className='authPageContentContainer'>
