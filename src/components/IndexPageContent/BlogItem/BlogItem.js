@@ -2,26 +2,27 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 require('dotenv').config({
-	path: `.env.${process.env.NODE_ENV}` // this dotenv config gives access to process.env object
+	path: `.env.${process.env.NODE_ENV}`
 });
 
 function BlogItem(props) {
 	const { username, alt, image, slug, title, timestamp } = props;
 	return (
-		<div className='hover:opacity-50'>
-			{/* <Link to={`${process.env.GATSBY_DEV_BLOG_API}/posts/${slug}`}> */}
-			<Link to={`blog/${slug}`} state={{ postDetail: props }}>
-				{/* <Link to={`${slug}`} state={{ postDetail: props }}> */}
+		<div className='blogItemContainer p-12 overflow-hidden rounded-lg shadow-2xl hover:opacity-75'>
+			<Link to={`blog/${slug}`}>
 				<GatsbyImage
 					image={image}
 					alt={alt}
 					className='max-h-[200px]'
 				/>
-				<h3 className='font-semibold text-black max-w-4/5 text-center mt-2 capitalize sm:text-base text-sm'>
+				<h3 className='font-lora font-semibold text-2xl	text-black truncate max-w-4/5 text-center mt-2 capitalize'>
 					{title}
 				</h3>
-				<p>{timestamp}</p>
-				<p>{username}</p>
+				<p className='text-center text-xl mt-4'>{timestamp}</p>
+				<p className='text-center text-xl font-medium'>By {username}</p>
+				<button className='font-lora p-2 rounded-lg	text-white bg-linearBlue text-center mt-6 flex m-auto'>
+					View the Post
+				</button>
 			</Link>
 		</div>
 	);

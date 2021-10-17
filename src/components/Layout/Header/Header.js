@@ -24,35 +24,31 @@ function Header() {
 	}, [logFlag]);
 
 	return (
-		<header>
-			<nav className='flex sm:justify-between justify-around items-center bg-white lg:px-20 sm:px-6 py-8 text-black'>
-				<Link to='/'>
-					<h3 className='font-lora text-2xl'>Sal Blog</h3>
-				</Link>
+		<nav className='flex sm:justify-between justify-around items-center bg-linearBlue lg:px-20 sm:px-6 py-4 text-white'>
+			<Link to='/'>
+				<h3 className='font-lora text-2xl'>Sal Blog</h3>
+			</Link>
 
-				<ul className='flex'>
-					{!logFlag && (
-						<>
-							<li className='font-lora mx-4 text-xl'>
-								<Link to='/auth?log-in'>Log In</Link>
-							</li>
-
-							<li className='font-lora mx-4 text-xl'>
-								<Link to='/auth?sign-up'>Sign Up</Link>
-							</li>
-						</>
-					)}
-
-					{logFlag && (
+			<ul className='flex'>
+				{!logFlag && (
+					<>
 						<li className='font-lora mx-4 text-xl'>
-							<button onClick={() => handleLogout()}>
-								Log Out
-							</button>
+							<Link to='/auth?log-in'>Log In</Link>
 						</li>
-					)}
-				</ul>
-			</nav>
-		</header>
+
+						<li className='font-lora mx-4 text-xl'>
+							<Link to='/auth?sign-up'>Sign Up</Link>
+						</li>
+					</>
+				)}
+
+				{logFlag && (
+					<li className='font-lora mx-4 text-xl'>
+						<button onClick={() => handleLogout()}>Log Out</button>
+					</li>
+				)}
+			</ul>
+		</nav>
 	);
 }
 

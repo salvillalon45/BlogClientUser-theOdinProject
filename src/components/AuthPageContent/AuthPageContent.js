@@ -12,7 +12,6 @@ function AuthPageContent(props) {
 	const [errors, setErrors] = React.useState(null);
 
 	React.useEffect(() => {
-		// ? : '';
 		if (checkUserLoggedIn()) {
 			navigate('/');
 		}
@@ -32,12 +31,10 @@ function AuthPageContent(props) {
 					body: JSON.stringify(authData)
 				}
 			);
-			// console.log('Wht is erspon');
-			// const errorsCheck = await response.json();
+
 			const loginData = await response.json();
-			// console.log({ loginData });
 			const errors = loginData.errors ?? '';
-			// console.log('HERE', errors);
+
 			if (errors) {
 				setErrors(errors);
 				return;
@@ -45,12 +42,13 @@ function AuthPageContent(props) {
 
 			if (authFlag === 'sign-up' && !errors) {
 				setErrors(null);
-				setSignUpMessage('Great! Now you need to log in!');
+				setSignUpMessage("Let's Log In!");
+				setUsername('');
+				setPassword('');
 			} else {
 				setErrors(null);
 				setSignUpMessage('');
 
-				// console.log({ loginData });
 				const { user, token } = loginData;
 				const { username, _id: user_ref } = user;
 
@@ -60,6 +58,8 @@ function AuthPageContent(props) {
 				);
 				localStorage.setItem('token', token);
 
+				setUsername('');
+				setPassword('');
 				navigate('/');
 			}
 		} catch (err) {
@@ -89,15 +89,19 @@ function AuthPageContent(props) {
 		);
 	}
 
-	// console.log(errors);
-
 	return (
 		<div className='authPageContentContainer'>
-			<h2>{authFlag === 'sign-up' ? 'Sign Up' : 'Log In'}</h2>
+			<h2 className='font-lora text-2xl text-center my-6'>
+				{authFlag === 'sign-up' ? 'Sign Up' : 'Log In'}
+			</h2>
+
 			<AuthForm
 				signUpMessage={authFlag === 'log-in' ? '' : signUpMessage}
 				handleSubmit={handleSubmit}
 				handleChange={handleChange}
+				buttonMessage={authFlag === 'sign-up' ? 'Sign Up' : 'Log In'}
+				username={username}
+				password={password}
 			/>
 
 			{errors && <Errors errors={errors} />}

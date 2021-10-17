@@ -8,16 +8,8 @@ require('dotenv').config({
 });
 
 function BlogPageContent(props) {
-	const {
-		username,
-		alt,
-		image,
-		slug,
-		title,
-		timestamp,
-		content,
-		_id: postid
-	} = props.post;
+	const { title, timestamp, content, author, _id: postid } = props.post;
+	const { username } = author;
 	const [comments, setCommments] = React.useState(null);
 	const [error, setError] = React.useState(null);
 	const [isLoaded, setIsLoaded] = React.useState(false);
@@ -70,15 +62,23 @@ function BlogPageContent(props) {
 
 	return (
 		<div className='blogPageContentContainer'>
-			<p>HI</p>
-			<p>{username}</p>
-			<p>{alt}</p>
-			<p>{slug}</p>
-			<p>{title}</p>
-			<p>{timestamp}</p>
-			<p>{content}</p>
+			<div className='blogContainer'>
+				<div className='blogInfoContainer my-9'>
+					<h3 className='font-lora font-semibold text-2xl	text-black truncate max-w-4/5 text-center mt-2 capitalize'>
+						{title}
+					</h3>
+					<p className='font-lora font-bold text-center text-xl font-medium'>
+						By {username}
+					</p>
+					<p className='font-lora text-center'>
+						On {formatDate(new Date(timestamp))}
+					</p>
+				</div>
 
-			<hr />
+				<p className='m-auto w-35 whitespace-pre-line'>{content}</p>
+			</div>
+
+			<hr className='my-9' />
 
 			{isLoaded && showComments()}
 		</div>

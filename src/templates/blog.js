@@ -30,7 +30,7 @@ function BlogTemplate(props) {
 	const { pathname } = props.location;
 	const postid = pathname.split('/')[2];
 	const post = getPostById(posts, postid);
-
+	console.log({ post });
 	return (
 		<Layout id={id}>
 			<section>

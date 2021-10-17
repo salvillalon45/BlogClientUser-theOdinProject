@@ -30,7 +30,7 @@ function Comments(props) {
 
 	return (
 		<div className='commmentsContainer flex flex-col items-center'>
-			<h1>Comment go here</h1>
+			<h1 className='font-lora font-bold text-2xl'>The Comments</h1>
 
 			{commentItems}
 

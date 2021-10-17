@@ -5,7 +5,7 @@ import BlogGrid from './BlogGrid';
 
 function IndexPageContent() {
 	return (
-		<div className='IndexPageContentContainer'>
+		<div className='indexPageContentContainer'>
 			<IntroHeader />
 
 			<BlogGrid />
