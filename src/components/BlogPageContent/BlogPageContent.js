@@ -18,7 +18,7 @@ function BlogPageContent(props) {
 	React.useEffect(async () => {
 		try {
 			const response = await fetch(
-				`${process.env.GATSBY_DEV_BLOG_API}/posts/${postid}/comments`,
+				`${process.env.GATSBY_BLOG_API}/posts/${postid}/comments`,
 				{
 					method: 'get',
 					headers: {

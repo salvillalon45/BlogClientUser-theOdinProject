@@ -26,7 +26,7 @@ function CommentForm(props) {
 			const postid = getPostId();
 			const newCommentBody = { content, user_ref };
 			const response = await fetch(
-				`${process.env.GATSBY_DEV_BLOG_API}/posts/${postid}/comments`,
+				`${process.env.GATSBY_BLOG_API}/posts/${postid}/comments`,
 				{
 					method: 'post',
 					headers: {

@@ -31,7 +31,7 @@ exports.onCreateWebpackConfig = ({ actions, stage, plugins }) => {
 // Creating Pages from Data Programmatically
 // More here: https://www.gatsbyjs.com/docs/programmatically-create-pages-from-data/
 exports.createPages = async ({ actions }) => {
-	const response = await fetch(`${process.env.GATSBY_DEV_BLOG_API}/posts`);
+	const response = await fetch(`${process.env.GATSBY_BLOG_API}/posts`);
 	const postsData = await response.json();
 
 	postsData.posts.forEach((item) => {
@@ -72,7 +72,7 @@ exports.sourceNodes = async ({
 	createContentDigest
 }) => {
 	// Get data from Blog API at build time
-	const response = await fetch(`${process.env.GATSBY_DEV_BLOG_API}/posts`);
+	const response = await fetch(`${process.env.GATSBY_BLOG_API}/posts`);
 	const postsData = await response.json();
 
 	// Create node for build time data. Here we are creating a GraphQL NODE!

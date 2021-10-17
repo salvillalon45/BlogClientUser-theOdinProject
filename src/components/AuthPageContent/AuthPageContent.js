@@ -22,7 +22,7 @@ function AuthPageContent(props) {
 			const authData = { username, password };
 
 			const response = await fetch(
-				`${process.env.GATSBY_DEV_BLOG_API}/${authFlag}`,
+				`${process.env.GATSBY_BLOG_API}/${authFlag}`,
 				{
 					method: 'post',
 					headers: {

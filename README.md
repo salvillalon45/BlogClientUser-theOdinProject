@@ -26,7 +26,7 @@
 | Black             |  ![#111113](https://via.placeholder.com/10/111113?text=+) `#111113`   |
 | Grey              | ![#eae9ee](https://via.placeholder.com/10/eae9ee?text=+) `#eae9ee`    |
 
-## Overall & Next Steps
+## Overall
 
 -   For this project, I wanted to practice getting know more of the features that Gatsby provides, using JS ES6 features & functions, writing reusable code, and using Tailwind (I heard a lot about this framework so I wanted to try it out). I learned a lot on this project. This is the first website I use Netlify to deploy!
 -   For Gatsby and Client Side Development:
@@ -40,6 +40,10 @@
     -   I used nullish coalescin and saw how beneficial it is! Clears the code by a lot
 -   For Tailwind
     -   It is a great framework. The idea with Tailwind is that you do not need to create css files. You can use the css selectors they already have. All I used for this project was use tailwind to style and I want to customize I add it to the tailwind.config.js. I am going to use Tailwind on my next project again!
+
+## Next Steps
+
+-   I am going to work on Blog Admin view now and I plan to continue practicing all this new skills I learned. I am curious to see if I can combine styled components with tailwind as I needed the same styling in many components, for example a button. So I wonder if I can combine it like that. If not I can just create a regular component
 
 ## Technologies:
 
