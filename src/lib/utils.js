@@ -59,7 +59,6 @@ function checkAuthPage(authFlag) {
 }
 
 function formatDate(timestamp) {
-	console.log({ timestamp });
 	const options = { year: 'numeric', month: 'short', day: 'numeric' };
 	const messageDate = timestamp.toLocaleDateString([], options);
 	return messageDate;

@@ -13,7 +13,7 @@ import * as React from 'react';
 
 // Components
 import Layout from '../components/Layout';
-// import Seo from '../components/Seo';
+import Seo from '../components/Seo';
 import IndexPageContent from '../components/IndexPageContent';
 // -----------------------------------------------
 
@@ -23,7 +23,7 @@ function IndexPage() {
 	return (
 		<Layout id={id}>
 			<section>
-				{/* <Seo title='Landing' /> */}
+				<Seo title='Home' />
 
 				<IndexPageContent />
 			</section>

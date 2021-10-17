@@ -52,9 +52,17 @@ function BlogPageContent(props) {
 		if (error) {
 			return <Errors errors={error} />;
 		} else if (!isLoaded) {
-			return <div>Loading...</div>;
+			return (
+				<div className='text-center'>
+					<p className='font-lato'>Loading comments...</p>
+				</div>
+			);
 		} else if (comments && comments.length === 0) {
-			return <div>No comments for this post</div>;
+			return (
+				<div className='text-center'>
+					<p className='font-lato'>No comments for this post</p>
+				</div>
+			);
 		}
 
 		return <Comments comments={comments} />;

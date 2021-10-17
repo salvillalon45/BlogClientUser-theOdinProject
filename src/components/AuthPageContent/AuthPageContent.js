@@ -80,12 +80,35 @@ function AuthPageContent(props) {
 
 	if (checkAuthPage(authFlag)) {
 		return (
-			<div className='authErrorContainer'>
-				<p>Looks like you are lost. See the links below</p>
-				<Link to='/'>Home</Link>
-				<Link to='/auth?log-in'>Log In</Link>
-				<Link to='/auth?sign-up'>Sign Up</Link>
-			</div>
+			<>
+				<Errors
+					errors={['Looks like you are lost. See the links below']}
+				/>
+
+				<div className='authErrorContainer flex justify-center'>
+					<Link
+						to='/'
+						type='button'
+						className='block w-20 mx-12 font-lora p-2 rounded-lg text-white bg-linearBlue text-center mt-6 m-auto'
+					>
+						Home
+					</Link>
+					<Link
+						to='/auth?log-in'
+						type='button'
+						className='block w-20 mx-12 font-lora p-2 rounded-lg text-white bg-linearBlue text-center mt-6 m-auto'
+					>
+						Log In
+					</Link>
+					<Link
+						to='/auth?sign-up'
+						type='button'
+						className='block w-20 mx-12	font-lora p-2 rounded-lg text-white bg-linearBlue text-center mt-6 m-auto'
+					>
+						Sign Up
+					</Link>
+				</div>
+			</>
 		);
 	}
 
