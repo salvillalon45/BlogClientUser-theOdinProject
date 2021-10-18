@@ -21,14 +21,12 @@ function BlogGrid() {
 	`);
 	const { posts } = data?.blogs;
 
-	const blogItems = posts.map((post, index) => {
+	const blogItems = posts.map((post) => {
 		const { title, content, timestamp, _id } = post;
 		const { username } = post.author;
 
 		return (
 			<BlogItem
-				alt={`A Blog Made By ${username}`}
-				image='image'
 				slug={_id}
 				title={title}
 				timestamp={formatDate(new Date(timestamp))}

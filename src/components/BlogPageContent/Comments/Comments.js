@@ -7,8 +7,6 @@ function Comments(props) {
 	const [currentComments, setCurrentComments] = React.useState(comments);
 
 	function handleCommmentsChange(formInput) {
-		console.log('Inside handleCommentsChange');
-		console.log({ formInput });
 		setCurrentComments([...currentComments, formInput]);
 	}
 

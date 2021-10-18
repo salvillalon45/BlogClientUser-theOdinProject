@@ -23,6 +23,7 @@ function CommentForm(props) {
 				timestamp: String(new Date())
 			};
 			props.handleCommmentsChange(formInput);
+
 			const postid = getPostId();
 			const newCommentBody = { content, user_ref };
 			const response = await fetch(
@@ -46,7 +47,6 @@ function CommentForm(props) {
 
 			setContent('');
 		} catch (err) {
-			console.log(err);
 			setErrors(err);
 		}
 	}

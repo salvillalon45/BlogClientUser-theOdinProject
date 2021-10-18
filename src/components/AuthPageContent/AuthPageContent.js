@@ -1,13 +1,12 @@
 import React from 'react';
 import AuthForm from './AuthForm';
 import { Link, navigate } from 'gatsby';
-import { getAuthPage, checkAuthPage, checkUserLoggedIn } from '../../lib/utils';
+import { checkAuthPage, checkUserLoggedIn } from '../../lib/utils';
 import Errors from '../Reusable/Errors';
 
 function AuthPageContent({ authFlag }) {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
-	// const [authFlag, setAuthFlag] = React.useState('sign-up');
 	const [signUpMessage, setSignUpMessage] = React.useState('');
 	const [errors, setErrors] = React.useState(null);
 
@@ -15,9 +14,6 @@ function AuthPageContent({ authFlag }) {
 		if (checkUserLoggedIn()) {
 			navigate('/');
 		}
-
-		// const authFlag = getAuthPage();
-		// setAuthFlag(authFlag);
 	});
 
 	async function handleSubmit() {
@@ -66,7 +62,6 @@ function AuthPageContent({ authFlag }) {
 				navigate('/');
 			}
 		} catch (err) {
-			console.log(err);
 			setErrors(err);
 		}
 	}

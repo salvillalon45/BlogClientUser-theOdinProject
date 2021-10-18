@@ -3,6 +3,7 @@ import { formatDate } from '../../../../lib/utils';
 
 function CommentItem(props) {
 	const { content, timestamp, username } = props.commentData;
+
 	return (
 		<div className='commentItemContainer p-12 overflow-hidden rounded-lg shadow-xl my-9 w-35'>
 			<p className='font-lato whitespace-pre-line text-xl'>{content}</p>

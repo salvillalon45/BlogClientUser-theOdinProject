@@ -37,10 +37,6 @@ function getPostId() {
 	return window.location.pathname.split('/')[2];
 }
 
-function getAuthPage() {
-	return window.location.search.slice(1);
-}
-
 function checkAuthPage(authFlag) {
 	if (authFlag === undefined || authFlag === null || authFlag.length === 0) {
 		return true;
@@ -55,11 +51,4 @@ function formatDate(timestamp) {
 	return messageDate;
 }
 
-export {
-	checkUserLoggedIn,
-	getPostById,
-	formatDate,
-	getPostId,
-	checkAuthPage,
-	getAuthPage
-};
+export { checkUserLoggedIn, getPostById, formatDate, getPostId, checkAuthPage };
