@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, navigate } from 'gatsby';
-
 import { checkUserLoggedIn } from '../../../lib/utils';
 
 function Header() {
@@ -8,7 +7,6 @@ function Header() {
 	const [logFlag, setLogFlag] = React.useState(userCheck);
 
 	function handleLogout() {
-		// console.log('Inside handleLogout');
 		localStorage.removeItem('user');
 		localStorage.removeItem('token');
 		setLogFlag(false);
@@ -16,11 +14,8 @@ function Header() {
 	}
 
 	React.useEffect(() => {
-		console.group('Inside Use Effect in Header');
 		const userCheck = checkUserLoggedIn();
-		console.log({ userCheck });
 		setLogFlag(userCheck);
-		console.groupEnd();
 	}, [logFlag]);
 
 	return (

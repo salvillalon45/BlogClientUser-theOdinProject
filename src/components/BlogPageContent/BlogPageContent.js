@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import Comments from './Comments';
 import { formatDate } from '../../lib/utils';
 import Errors from '../Reusable/Errors';

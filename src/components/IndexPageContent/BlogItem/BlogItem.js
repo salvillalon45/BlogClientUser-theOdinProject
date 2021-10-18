@@ -1,20 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`
 });
 
 function BlogItem(props) {
-	const { username, alt, image, slug, title, timestamp } = props;
+	const { username, slug, title, timestamp } = props;
 	return (
 		<div className='blogItemContainer p-12 overflow-hidden rounded-lg shadow-2xl hover:opacity-75'>
 			<Link to={`blog/${slug}`}>
-				<GatsbyImage
-					image={image}
-					alt={alt}
-					className='max-h-[200px]'
-				/>
 				<h3 className='font-lora font-semibold text-2xl	text-black truncate max-w-4/5 text-center mt-2 capitalize'>
 					{title}
 				</h3>

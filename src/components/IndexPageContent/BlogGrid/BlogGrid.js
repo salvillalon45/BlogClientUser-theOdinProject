@@ -3,7 +3,7 @@ import BlogItem from '../BlogItem';
 import { graphql, useStaticQuery } from 'gatsby';
 import { formatDate } from '../../../lib/utils';
 
-function BlogGrid(props) {
+function BlogGrid() {
 	const data = useStaticQuery(graphql`
 		query {
 			blogs {

@@ -1,26 +1,9 @@
-// -----------------------------------------------
-//
-// Pages -> index.js
-// Desc: Home Page
-//
-// -----------------------------------------------
-
-// -----------------------------------------------
-// Imports
-
-// React
 import * as React from 'react';
-
-// Components
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Seo from '../components/Seo';
-import { graphql } from 'gatsby';
-
 import BlogPageContent from '../components/BlogPageContent';
-
-// Util
 import { getPostById } from '../lib/utils';
-// -----------------------------------------------
 
 function BlogTemplate(props) {
 	const id = 'blogPageContainer';

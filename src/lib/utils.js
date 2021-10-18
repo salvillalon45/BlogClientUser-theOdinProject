@@ -33,6 +33,7 @@ function checkUserLoggedIn() {
 		console.groupEnd();
 		return true;
 	} catch (error) {
+		console.log('What is error in checkUserLoggedIn');
 		console.log(error);
 		return false;
 	}
