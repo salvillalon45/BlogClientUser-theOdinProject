@@ -5,9 +5,9 @@ import { getAuthPage, checkAuthPage, checkUserLoggedIn } from '../../lib/utils';
 import Errors from '../Reusable/Errors';
 
 function AuthPageContent(props) {
-	const authFlag = getAuthPage();
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
+	const [authFlag, setAuthFlag] = React.useState('sign-up');
 	const [signUpMessage, setSignUpMessage] = React.useState('');
 	const [errors, setErrors] = React.useState(null);
 
@@ -15,6 +15,9 @@ function AuthPageContent(props) {
 		if (checkUserLoggedIn()) {
 			navigate('/');
 		}
+
+		const authFlag = getAuthPage();
+		setAuthFlag(authFlag);
 	});
 
 	async function handleSubmit() {
