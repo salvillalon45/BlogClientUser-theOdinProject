@@ -7,7 +7,7 @@ module.exports = {
 		title: 'Sal Blog',
 		titleTemplate: '%s · Sal Blog',
 		description: 'A blog made by Salvador Villalon',
-		url: 'https://www.doe.com', // No trailing slash allowed!
+		url: 'https://blog-sal.netlify.app/', // No trailing slash allowed!
 		image: '/images/sal.png', // Path to your image you placed in the 'static' folder
 		twitterUsername: '@salvillalon45'
 	},
