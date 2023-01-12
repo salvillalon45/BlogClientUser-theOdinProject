@@ -1,6 +1,5 @@
-<h1 align="center">
+# Blog Client (User View)
 [The Odin Project: Node] - Project: Blog Client User View
-</h1>
 
 ## Intro
 
@@ -21,10 +20,10 @@
 
 |  Color            |  Hex                                                                  |
 | ----------------- | --------------------------------------------------------------------- |
-|  Blue             |  ![#020024](https://via.placeholder.com/10/020024?text=+) `#020024`   |
-|  White            |  ![#fffefd](https://via.placeholder.com/10/fffefd?text=+) `#fffefd`   |
-| Black             |  ![#111113](https://via.placeholder.com/10/111113?text=+) `#111113`   |
-| Grey              | ![#eae9ee](https://via.placeholder.com/10/eae9ee?text=+) `#eae9ee`    |
+|  Blue             |  ![#020024](https://placehold.co/15x15/020024/020024.png) `#020024`   |
+|  White            |  ![#fffefd](https://placehold.co/15x15/fffefd/fffefd.png) `#fffefd`   |
+|  Black            |  ![#111113](https://placehold.co/15x15/111113/111113.png) `#111113`   |
+|  Grey             |  ![#eae9ee](https://placehold.co/15x15/eae9ee/eae9ee.png) `#eae9ee`   |
 
 ## Overall
 
